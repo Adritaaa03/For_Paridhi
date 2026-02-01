@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Open When Letters for My Bestie 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sacramento&family=Roboto&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #a1c4fd, #c2e9fb, #fbc2eb);
+            text-align: center;
+            padding: 50px;
+            transition: background 1s ease;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-family: 'Sacramento', cursive;
+            font-size: 55px;
+            color: #fff;
+            text-shadow: 2px 2px 5px #ff7eb9;
+        }
+
+        p {
+            font-size: 20px;
+            color: #fff;
+        }
+
+        button {
+            background-color: #ff7eb9;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            margin: 15px;
+            font-size: 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff4d6d;
+            transform: scale(1.1);
+        }
+
+        .letter {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            margin-top: 30px;
+            border-radius: 20px;
+            display: none;
+            font-size: 20px;
+            color: #333;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+
+        /* Floating stars animation */
+        .floating-star {
+            position: absolute;
+            font-size: 20px;
+            color: #ffd700;
+            animation: floatUp 6s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Final popup */
+        #popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ff7eb9;
+            color: white;
+            padding: 40px;
+            border-radius: 25px;
+            display: none;
+            font-size: 24px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+
+        #popup button {
+            margin-top: 20px;
+            background-color: #fff;
+            color: #ff4d6d;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>💖 Open When Letters 💖</h1>
+<p>For my best friend <span style="color:#ff4d6d; font-weight:bold;">Paridhi</span> 💕</p>
+<p>Click a button to read a special message!</p>
+
+<button onclick="showLetter(1)">Open when you miss me 😢</button>
+<button onclick="showLetter(2)">Open when you’re happy 😄</button>
+<button onclick="showLetter(3)">Open when you’re stressed 😫</button>
+<button onclick="showLetter(4)">Open when you’re bored 😜</button>
+<button onclick="showPopup()">Surprise! 🎉</button>
+
+<div class="letter" id="letter"></div>
+
+<!-- Optional soft music -->
+<audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-summer.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Final popup -->
+<div id="popup">
+    🎊 Hey Paridhi! <br>Even though we are far, you’re always close to my heart ❤️<br>
+    <button onclick="closePopup()">Close</button>
+</div>
+
+<script>
+    function showLetter(choice) {
+        let text = "";
+        if (choice === 1) {
+            text = "Hey Paridhi! I know we’re far apart, but I’m thinking of you 💖 Every memory we share makes me smile 🥹";
+        } else if (choice === 2) {
+            text = "Yay! I’m so happy you’re happy 😄 Keep smiling and know I’m cheering for you always 💕";
+        } else if (choice === 3) {
+            text = "Stressful day? Take a deep breath 😌 Remember, I’m just a message away and we’ll get through everything together 🌸";
+        } else if (choice === 4) {
+            text = "Bored? Let’s plan our next adventure soon 😎 Can’t wait to hang out and laugh until our stomachs hurt 🥰";
+        }
+        document.getElementById("letter").style.display = "block";
+        document.getElementById("letter").innerHTML = text;
+
+        // Add floating stars
+        for(let i=0; i<5; i++){
+            createStar();
+        }
+    }
+
+    function createStar() {
+        const star = document.createElement("div");
+        star.classList.add("floating-star");
+        star.style.left = Math.random() * window.innerWidth + "px";
+        star.style.fontSize = (15 + Math.random() * 20) + "px";
+        star.innerHTML = "⭐";
+        document.body.appendChild(star);
+        setTimeout(()=>{star.remove()}, 6000);
+    }
+
+    // Show final popup
+    function showPopup() {
+        document.getElementById("popup").style.display = "block";
+    }
+
+    function closePopup() {
+        document.getElementById("popup").style.display = "none";
+    }
+</script>
+
+</body>
+</html>
